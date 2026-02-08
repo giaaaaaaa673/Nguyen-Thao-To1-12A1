@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vy Thảo - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* --- BẢNG MÀU XANH LAM PASTEL --- */
+            --primary-color: #a2d2ff;   /* Xanh da trời nhạt */
+            --dark-color: #5e95cc;      /* Xanh đậm hơn cho chữ/icon */
+            --bg-color: #f0f8ff;        /* Màu nền Alice Blue siêu nhạt */
+            --text-color: #4a4a4a;
+            
+            /* Fonts */
+            --heading-font: 'Playfair Display', serif;
+            --body-font: 'Nunito', sans-serif;
+            --logo-font: 'Dancing Script', cursive;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            background-color: var(--bg-color);
+            background-image: linear-gradient(180deg, #eaf6ff 0%, #f0f8ff 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- Header / Navigation --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(162, 210, 255, 0.2);
+        }
+
+        .logo {
+            font-family: var(--logo-font);
+            font-size: 28px;
+            color: var(--dark-color);
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--dark-color);
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 18px;
+            color: var(--dark-color);
+        }
+
+        /* --- Global Layout --- */
+        section {
+            padding: 60px 10%;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-family: var(--heading-font);
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        /* --- Section 1: Về Thảo (Intro) --- */
+        .intro-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .intro-img {
+            flex: 1;
+            position: relative;
+        }
+
+        .intro-img img {
+            width: 100%;
+            max-width: 400px; 
+            height: 450px;    
+            border-radius: 20px;
+            box-shadow: 10px 10px 30px rgba(162, 210, 255, 0.4); 
+            object-fit: cover; 
+            object-position: center top; 
+            display: block;
+            margin: 0 auto;
+        }
+
+        .intro-text {
+            flex: 1.2;
+        }
+
+        .intro-text h2 {
+            font-family: var(--body-font);
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .intro-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+            color: #666;
+        }
+
+        .intro-quote {
+            font-style: italic;
+            color: var(--dark-color);
+            margin-top: 20px;
+            border-left: 3px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        /* --- Section 2: Thế mạnh (Strengths) --- */
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 300px;
+            text-align: left;
+            box-shadow: 0 10px 20px rgba(162, 210, 255, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            font-size: 30px;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: #eee;
+            border-radius: 2px;
+            margin-top: 15px;
+            width: 50px;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            width: 80%; 
+        }
+
+        /* --- Section 3: Kỷ niệm (Memories) --- */
+        .memories-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap; 
+            justify-content: center;
+        }
+
+        .memory-card {
+            width: 350px;
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(162, 210, 255, 0.15);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+            margin-bottom: 10px;
+        }
+        
+        .memory-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .memory-card img {
+            width: 100%;
+            height: 250px; 
+            object-fit: cover; 
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .memory-info {
+            flex-grow: 1; 
+        }
+
+        .memory-info h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 700;
+        }
+        
+        .memory-info p {
+            font-size: 13px;
+            color: #777;
+        }
+
+        /* --- Section 4: Chat với Thảo (Contact) --- */
+        .contact-section {
+            background: transparent;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            padding-top: 40px;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e0eaff;
+            background: white;
+            border-radius: 10px;
+            font-family: inherit;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.01);
+            outline: none;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+        }
+
+        textarea.form-control {
+            resize: none;
+            height: 120px;
+        }
+
+        .btn-send {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-color);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 16px;
+        }
+
+        .btn-send:hover {
+            background: var(--dark-color);
+        }
+
+        .contact-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 15px;
+        }
+
+        .social-link i {
+            color: var(--dark-color);
+            font-size: 20px;
+        }
+
+        .footer-lyric {
+            text-align: center;
+            margin-top: 40px;
+            font-family: var(--heading-font);
+            font-style: italic;
+            color: #99aab5;
+            font-size: 18px;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            nav { display: none; }
+            .intro-container, .memories-container, .contact-container {
+                flex-direction: column;
+            }
+            .card { width: 100%; }
+            .memory-card { width: 100%; }
+            .memory-card img { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Vy Thảo ♡</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Về Thảo</a></li>
+                <li><a href="#skills">Thế mạnh</a></li>
+                <li><a href="#memories">Kỷ niệm</a></li>
+                <li><a href="#contact">Chat với Thảo</a></li>
+            </ul>
+        </nav>
+        <div class="theme-toggle">
+            <i class="fa-solid fa-moon"></i>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="intro-container">
+            <div class="intro-img">
+                <img src="https://i.postimg.cc/wjPKcLws/IMG-5829.jpg" alt="Vy Thảo">
+            </div>
+            <div class="intro-text">
+                <h2>Xin chào! Mình là Nguyễn Vy Thảo, hiện đang học lớp 12A1 trường THPT Tây Sơn nha ♡</h2>
+                <p>Mình là một cô gái yêu màu xanh, thích bầu trời và những ngày nắng đẹp. Mình luôn cố gắng học tập thật tốt để biến ước mơ thành hiện thực.</p>
+                <p>Phương châm sống của mình: "Hãy hướng về phía mặt trời, bóng tối sẽ ngả về sau bạn." ☁️✨</p>
+                <div class="intro-quote">
+                    "Keep your face always toward the sunshine."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Sở thích & Thế mạnh</h2>
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-language"></i></div>
+                <h3>Thế mạnh ngoại ngữ</h3>
+                <p>Yêu thích Tiếng Anh • Giao tiếp tự tin • Thích xem phim US-UK không Vietsub</p>
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-camera-retro"></i></div>
+                <h3>Nhiếp ảnh & Nghệ thuật</h3>
+                <p>Thích chụp ảnh bầu trời • Edit màu ảnh tone xanh • Yêu cái đẹp</p>
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-music"></i></div>
+                <h3>Âm nhạc & Thư giãn</h3>
+                <p>Nghe nhạc Indie • Thích đi cafe cùng bạn bè • Đọc sách ngày mưa</p>
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="memories">
+        <h2 class="section-title">Kỷ niệm đáng nhớ</h2>
+        <div class="memories-container">
+            <div class="memory-card">
+                <img src="https://i.postimg.cc/fb0C49D4/IMG-2513.jpg" alt="Ngày truyền thống học sinh sinh viên">
+                <div class="memory-info">
+                    <h4>Nhiệt huyết thanh niên</h4>
+                    <p>Kỷ niệm ngày truyền thống học sinh, sinh viên (09/01). Tự hào màu áo xanh tuổi trẻ Tây Sơn!</p>
+                </div>
+            </div>
+            
+            <div class="memory-card">
+                <img src="https://i.postimg.cc/BvGL6L2q/IMG-8146.jpg" alt="Tham quan bảo tàng">
+                <div class="memory-info">
+                    <h4>Chuyến đi thực tế bổ ích</h4>
+                    <p>Tham quan tìm hiểu lịch sử, nơi lưu giữ những giá trị văn hóa đáng trân trọng.</p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <img src="https://i.postimg.cc/ZRMMPSbS/Khong-Co-Tieu-De54-20260104230310.png" alt="Vy Thảo selfie">
+                <div class="memory-info">
+                    <h4>Một ngày nắng đẹp</h4>
+                    <p>Luôn giữ nụ cười trên môi và năng lượng tích cực cho những dự định sắp tới ♡</p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <img src="https://i.postimg.cc/nhNfxqbc/IMG-2912.jpg" alt="Kỷ niệm cùng bạn bè">
+                <div class="memory-info">
+                    <h4>Thanh xuân rực rỡ</h4>
+                    <p>Lưu giữ những nụ cười và khoảnh khắc đáng yêu bên cạnh những người bạn tuyệt vời.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-form">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Tên / Zalo của bạn">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Muốn nhắn nhủ gì với Thảo thì viết vào đây nha ☁️"></textarea>
+                </div>
+                <button class="btn-send">Gửi tin nhắn cho Thảo!</button>
+            </div>
+            <div class="contact-info">
+                <div class="social-link">
+                    <i class="fa-brands fa-tiktok"></i> @juncii171
+                </div>
+                <div class="social-link">
+                    <i class="fa-brands fa-instagram"></i> @vthao_jcii
+                </div>
+                <div class="social-link">
+                    <i class="fa-solid fa-cloud"></i> Yêu màu xanh & sự bình yên
+                </div>
+            </div>
+        </div>
+        <div class="footer-lyric">
+            Dream a little dream of me...
+        </div>
+    </section>
+
+</body>
+</html>
